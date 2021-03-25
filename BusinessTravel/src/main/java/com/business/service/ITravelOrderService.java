@@ -16,5 +16,6 @@ public interface ITravelOrderService extends IService<TravelOrder> {
 
     void testInsert();
     void testBatchInsert();
+    void testQuery();
 
 }

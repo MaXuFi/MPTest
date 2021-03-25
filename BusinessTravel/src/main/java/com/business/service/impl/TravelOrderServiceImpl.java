@@ -45,7 +45,7 @@ public class TravelOrderServiceImpl extends ServiceImpl<TravelOrderMapper, Trave
             travelOrder.setCreateTime(new Date());
             travelOrder.setModifyTime(new Date());
             travelOrder.setSettleState(random.nextInt(2));
-            travelOrder.setOrderAmount(BigDecimal.TEN);
+            travelOrder.setOrderAmount(BigDecimal.valueOf(random.nextInt(100)));
             travelOrder.setOrderUserNum(111112 + i);
             travelOrder.setOrderUserName("测试" + i);
             travelOrder.setOrderUserMobile("1923498" + i);
@@ -76,7 +76,7 @@ public class TravelOrderServiceImpl extends ServiceImpl<TravelOrderMapper, Trave
         travelOrder.setCreateTime(new Date());
         travelOrder.setModifyTime(new Date());
         travelOrder.setSettleState(random.nextInt(2));
-        travelOrder.setOrderAmount(BigDecimal.TEN);
+        travelOrder.setOrderAmount(BigDecimal.valueOf(random.nextInt(100)));
         travelOrder.setOrderUserNum(111112 + 00);
         travelOrder.setOrderUserName("批量测试" + 00);
         travelOrder.setOrderUserMobile("1923498" + 00);
@@ -121,5 +121,89 @@ public class TravelOrderServiceImpl extends ServiceImpl<TravelOrderMapper, Trave
         orderList.add(travelOrder2);
 
         saveBatch(orderList);
+    }
+
+    @Override
+    public void testQuery() {
+        //根据id查询
+        //TravelOrder travelOrder = travelOrderMapper.selectById("534225851186339840");
+        //System.out.println(travelOrder);
+
+        //根据id批量查询
+        //List<String> idList = new ArrayList<>();
+        //idList.add("534225851311644672");
+        //idList.add("534225851333271552");
+        //List<TravelOrder> orderList = travelOrderMapper.selectBatchIds(idList);
+        //orderList.forEach(order -> System.out.println(order));
+
+        ////查询字段值为 XX 的实体集合
+        //Map map = new HashMap();
+        //map.put("create_time" , "2021-03-23 14:29:39");
+        //List<TravelOrder> list = travelOrderMapper.selectByMap(map);
+
+        //分页查询
+        //Page page = new Page(1, 20);
+        //QueryWrapper<TravelOrder> queryWrapper = new QueryWrapper<>();
+        //查询创建时间为2021-03-23 14:29:39的数据
+        //queryWrapper.eq("create_time" , "2021-03-23 14:29:39");
+        //Page selectPage = travelOrderMapper.selectPage(page, queryWrapper);
+        //System.out.println(selectPage.getTotal());
+        //System.out.println(selectPage.getSize());
+        //System.out.println(selectPage.getRecords());
+
+        //查询符合条件的数量
+        //Integer integer = travelOrderMapper.selectCount(queryWrapper);
+        //System.out.println(integer);
+
+        //查询创建时间不为2021-03-23 14:29:39的数据
+        //queryWrapper.ne("create_time" , "2021-03-23 14:29:39");
+        //List<TravelOrder> orders = travelOrderMapper.selectList(queryWrapper);
+        //System.out.println("时间不等于2021-03-23 14:29:39 的数据：" + orders);
+
+        //查询金额大于90的数据
+        // 此外还有 ge:大于等于    lt:小于   le:小于等于
+        //queryWrapper.gt("order_amount", 90);
+        //List<TravelOrder> orders1 = travelOrderMapper.selectList(queryWrapper);
+        //System.out.println("金额大于90的数据：" + orders1);
+
+        //查询金额在30 到 50之间的数据
+        //queryWrapper.between("order_amount", 30, 50);
+        //List<TravelOrder> orders2 = travelOrderMapper.selectList(queryWrapper);
+        //System.out.println(orders2);
+
+
+
+
+        //lambda表达式查询数据
+        //travelOrderMapper.selectList(new QueryWrapper<TravelOrder>().lambda().eq(TravelOrder::getApplicationId, 131342423L));
+
+
+        //多参数可为空查询(实体类接收前端参数，map形式传参SQL查询)
+        //TravelOrder travelOrder = new TravelOrder();
+        //travelOrder.setOrderId(534225852389580800L);
+        //travelOrder.setOnTheWayOrder(534225852390367233L);
+        //travelOrder.setApplicationId(534225852390105090L);
+        //Map<String, Object> paramMap = new HashMap<>(5);
+        //paramMap.put("order_id", travelOrder.getOrderId());
+        //paramMap.put("flight_type", travelOrder.getFlightType());
+        //paramMap.put("xxx", travelOrder.getFlightType());
+        //paramMap.put("xxx", travelOrder.getFlightType());
+        //paramMap.put("xxx", travelOrder.getFlightType());
+        //List<TravelOrder> orders = travelOrderMapper.selectList(new QueryWrapper<TravelOrder>().allEq(paramMap, false));
+
+        //查询时间段内数据
+        //List<TravelOrder> orders = travelOrderMapper.selectList(new QueryWrapper<TravelOrder>().between("create_time", "2021-03-23 00:00:00", "2021-03-23 23:59:59"));
+
+        //查询时间段内数据
+        //List<TravelOrder> orders = travelOrderMapper.selectList(new QueryWrapper<TravelOrder>().le("create_time", "2021-03-24").ge("create_time", "2021-03-23"));
+
+       //Like左匹配查询
+        //List<TravelOrder> orders = travelOrderMapper.selectList(query().getWrapper().likeLeft("order_id", 53422));
+
+        //不确定字段查询
+        //List<TravelOrder> orders = travelOrderMapper.selectList(
+        //                                                    query().getWrapper().like("order_id", 5128).
+        //                                                                    or().like("application_id", 5128));
+        //System.out.println(orders);
     }
 }
