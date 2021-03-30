@@ -5,11 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.business.entity.TravelOrder;
 import com.business.service.ITravelOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
-
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -133,5 +132,11 @@ public class TravelOrderController {
         travelOrderService.testQuery();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/setCookies",method = RequestMethod.GET)
+    public  void setCookies(HttpServletResponse response){
+        Cookie cookie=new Cookie("cookie","juaiyouxuan");
+        response.addCookie(cookie);
+    }
 
 }

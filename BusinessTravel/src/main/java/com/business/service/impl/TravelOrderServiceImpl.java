@@ -142,9 +142,9 @@ public class TravelOrderServiceImpl extends ServiceImpl<TravelOrderMapper, Trave
         //List<TravelOrder> list = travelOrderMapper.selectByMap(map);
 
         //分页查询
-        //Page page = new Page(1, 20);
+        //Page page = new Page(2, 20);
         //QueryWrapper<TravelOrder> queryWrapper = new QueryWrapper<>();
-        //查询创建时间为2021-03-23 14:29:39的数据
+        ////查询创建时间为2021-03-23 14:29:39的数据
         //queryWrapper.eq("create_time" , "2021-03-23 14:29:39");
         //Page selectPage = travelOrderMapper.selectPage(page, queryWrapper);
         //System.out.println(selectPage.getTotal());
@@ -190,7 +190,8 @@ public class TravelOrderServiceImpl extends ServiceImpl<TravelOrderMapper, Trave
         //paramMap.put("xxx", travelOrder.getFlightType());
         //paramMap.put("xxx", travelOrder.getFlightType());
         //List<TravelOrder> orders = travelOrderMapper.selectList(new QueryWrapper<TravelOrder>().allEq(paramMap, false));
-
+        //Map<String, Object> beanToMap = BeanUtils.beanToMap(travelOrder);
+        //List<TravelOrder> orders = travelOrderMapper.selectByMap(beanToMap);
         //查询时间段内数据
         //List<TravelOrder> orders = travelOrderMapper.selectList(new QueryWrapper<TravelOrder>().between("create_time", "2021-03-23 00:00:00", "2021-03-23 23:59:59"));
 
